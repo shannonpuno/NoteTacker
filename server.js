@@ -14,7 +14,7 @@ const app = express();
 //Middleware for parsing application/json
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use(express.static(__dirname));
+app.use(express.static('public'));
 app.use('/api', api);
 app.use('/', html);
 
