@@ -1,5 +1,7 @@
 
 const express = require('express');
+const fs = require('fs');
+const path = require('path');
 
 const api = require('./routes/routesAPI');
 const html = require('./routes/routeHTML');
@@ -12,10 +14,11 @@ const app = express();
 //Middleware for parsing application/json
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+app.use(express.static(__dirname));
 app.use('/api', api);
 app.use('/', html);
 
-app.use(express.static('public'));
+
 // Create Listener
 app.listen(PORT, () =>
     console.log(`Express server listening on port ${PORT}!`)
