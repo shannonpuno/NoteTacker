@@ -12,13 +12,13 @@ const {v4 : uuid4} = require('uuid');
 const allNotes = fs.readFileSync('./db/db.json', 'utf-8');
 if (allNotes) {
     let prevNotes = JSON.parse(allNotes);
-    dbFile = prevNotes;
+    notes = prevNotes;
 } else {
-    dbFile = [];
+    notes = [];
 }
 
 router.get('/api/notes', (req, res) => {
-    return res.json(dbFile);
+    return res.json(notes);
 });
 //POST /api/notes should recieve a new note to save on the request body,
 router.post('/api/notes', (req, res) => {
@@ -32,8 +32,8 @@ router.post('/api/notes', (req, res) => {
     };
      //add it to the db.json file, then return new note to client
      dbFile.push(newUserNote);
-     fs.writeFileSync('./db/db.json', JSON.stringify(dbFile));
-     res.json(dbFile);
+     fs.writeFileSync('./db/db.json', JSON.stringify(notes));
+     res.json(notes);
 });
 
 

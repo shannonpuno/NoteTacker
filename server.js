@@ -3,7 +3,7 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 
-const api = require('./routes/routesAPI');
+const api = require('./routes/routesAPI/routesAPI');
 const html = require('./routes/routeHTML');
 
 // Create express server
@@ -20,6 +20,6 @@ app.use('/', html);
 
 
 // Create Listener
-app.listen(PORT, () =>
-    console.log(`Express server listening on port ${PORT}!`)
-);
+app.listen(PORT, () => {
+    console.log(`Our app is running on port ${ PORT }`);
+});
