@@ -2,9 +2,6 @@
 const router = require('express').Router();
 const fs = require('fs');
 
-
-
-
 //Import npm uuid to create ids
 const {v4 : uuid4} = require('uuid');
 
