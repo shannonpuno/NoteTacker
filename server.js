@@ -8,7 +8,7 @@ const html = require('./routes/htmlRoute');
 
 
 // Create express server
-const PORT = process.env.port || 3001;
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 
