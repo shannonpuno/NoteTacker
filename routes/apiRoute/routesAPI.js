@@ -2,6 +2,8 @@
 const router = require('express').Router();
 const fs = require('fs');
 
+const { db } = require('../../db/db.json');
+
 //Import npm uuid to create ids
 const {v4 : uuid4} = require('uuid');
 
@@ -14,23 +16,24 @@ if (allNotes) {
     notes = [];
 }
 
-router.get('/api/notes', (req, res) => {
+router.get('/notes', (req, res) => {
     return res.json(notes);
 });
 //POST /api/notes should recieve a new note to save on the request body,
-router.post('/api/notes', (req, res) => {
+router.post('/notes', (req, res) => {
     //Unique ID from uuid 
-    let newUserNoteID = uuid4();
+    let noteId = uuid4();
 
-    const newUserNote = {
-        id: newUserNoteID,
+    let newNote = {
+        id: noteId,
         title: req.body.title,
         text: req.body.text,
     };
      //add it to the db.json file, then return new note to client
-     dbFile.push(newUserNote);
+     notes.push(newNote);
+     res.json(newNote);
      fs.writeFileSync('./db/db.json', JSON.stringify(notes));
-     res.json(notes);
+
 });
 
 
